@@ -24,7 +24,12 @@
     "type": "git",
     "url": "git+https://github.com/swernerx/skycons.git"
   },
-  "keywords": ["weather", "icon", "canvas", "animation"],
+  "keywords": [
+    "weather",
+    "icon",
+    "canvas",
+    "animation"
+  ],
   "author": {
     "name": "Sebastian Software",
     "email": "s.werner@sebastian-software.de",
@@ -34,5 +39,10 @@
   "bugs": {
     "url": "https://github.com/swernerx/skycons/issues"
   },
-  "homepage": "https://github.com/swernerx/skycons#readme"
+  "homepage": "https://github.com/swernerx/skycons#readme",
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-readable": "^1.13.2",
+    "prettier": "^1.12.1"
+  }
 }
