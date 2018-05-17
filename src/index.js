@@ -1,4 +1,4 @@
-/* eslint-disable filenames/match-exported, max-params, max-statements, no-magic-numbers */
+/* eslint-disable filenames/match-exported, max-params, max-statements, no-magic-numbers, id-length */
 const requestInterval = function(fn) {
   const handle = { value: null }
 
