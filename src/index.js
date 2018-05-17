@@ -18,10 +18,13 @@ const cancelInterval = function(handle) {
 /* Define skycon things. */
 /* FIXME: I'm *really really* sorry that this code is so gross. Really, I am.
    * I'll try to clean it up eventually! Promise! */
-let KEYFRAME = 500,
-  STROKE = 0.08,
-  TAU = 2.0 * Math.PI,
-  TWO_OVER_SQRT_2 = 2.0 / Math.sqrt(2)
+const KEYFRAME = 500
+
+const STROKE = 0.08
+
+const TAU = 2.0 * Math.PI
+
+const TWO_OVER_SQRT_2 = 2.0 / Math.sqrt(2)
 
 function circle(ctx, x, y, r) {
   ctx.beginPath()
@@ -37,8 +40,9 @@ function line(ctx, ax, ay, bx, by) {
 }
 
 function puff(ctx, t, cx, cy, rx, ry, rmin, rmax) {
-  let c = Math.cos(t * TAU),
-    s = Math.sin(t * TAU)
+  const c = Math.cos(t * TAU)
+
+  const s = Math.sin(t * TAU)
 
   rmax -= rmin
 
@@ -54,10 +58,13 @@ function puffs(ctx, t, cx, cy, rx, ry, rmin, rmax) {
 function cloud(ctx, t, cx, cy, cw, s, color) {
   t /= 30000
 
-  let a = cw * 0.21,
-    b = cw * 0.12,
-    c = cw * 0.24,
-    d = cw * 0.28
+  const a = cw * 0.21
+
+  const b = cw * 0.12
+
+  const c = cw * 0.24
+
+  const d = cw * 0.28
 
   ctx.fillStyle = color
   puffs(ctx, t, cx, cy, a, b, c, d)
@@ -70,13 +77,19 @@ function cloud(ctx, t, cx, cy, cw, s, color) {
 function sun(ctx, t, cx, cy, cw, s, color) {
   t /= 120000
 
-  let a = cw * 0.25 - s * 0.5,
-    b = cw * 0.32 + s * 0.5,
-    c = cw * 0.5 - s * 0.5,
-    i,
-    p,
-    cos,
-    sin
+  const a = cw * 0.25 - s * 0.5
+
+  const b = cw * 0.32 + s * 0.5
+
+  const c = cw * 0.5 - s * 0.5
+
+  let i
+
+  let p
+
+  let cos
+
+  let sin
 
   ctx.strokeStyle = color
   ctx.lineWidth = s
@@ -98,10 +111,13 @@ function sun(ctx, t, cx, cy, cw, s, color) {
 function moon(ctx, t, cx, cy, cw, s, color) {
   t /= 15000
 
-  let a = cw * 0.29 - s * 0.5,
-    b = cw * 0.05,
-    c = Math.cos(t * TAU),
-    p = c * TAU / -16
+  const a = cw * 0.29 - s * 0.5
+
+  const b = cw * 0.05
+
+  const c = Math.cos(t * TAU)
+
+  const p = c * TAU / -16
 
   ctx.strokeStyle = color
   ctx.lineWidth = s
@@ -127,13 +143,19 @@ function moon(ctx, t, cx, cy, cw, s, color) {
 function rain(ctx, t, cx, cy, cw, s, color) {
   t /= 1350
 
-  let a = cw * 0.16,
-    b = TAU * 11 / 12,
-    c = TAU * 7 / 12,
-    i,
-    p,
-    x,
-    y
+  const a = cw * 0.16
+
+  const b = TAU * 11 / 12
+
+  const c = TAU * 7 / 12
+
+  let i
+
+  let p
+
+  let x
+
+  let y
 
   ctx.fillStyle = color
 
@@ -151,11 +173,15 @@ function rain(ctx, t, cx, cy, cw, s, color) {
 function sleet(ctx, t, cx, cy, cw, s, color) {
   t /= 750
 
-  let a = cw * 0.1875,
-    i,
-    p,
-    x,
-    y
+  const a = cw * 0.1875
+
+  let i
+
+  let p
+
+  let x
+
+  let y
 
   ctx.strokeStyle = color
   ctx.lineWidth = s * 0.5
@@ -173,21 +199,35 @@ function sleet(ctx, t, cx, cy, cw, s, color) {
 function snow(ctx, t, cx, cy, cw, s, color) {
   t /= 3000
 
-  let a = cw * 0.16,
-    b = s * 0.75,
-    u = t * TAU * 0.7,
-    ux = Math.cos(u) * b,
-    uy = Math.sin(u) * b,
-    v = u + TAU / 3,
-    vx = Math.cos(v) * b,
-    vy = Math.sin(v) * b,
-    w = u + TAU * 2 / 3,
-    wx = Math.cos(w) * b,
-    wy = Math.sin(w) * b,
-    i,
-    p,
-    x,
-    y
+  const a = cw * 0.16
+
+  const b = s * 0.75
+
+  const u = t * TAU * 0.7
+
+  const ux = Math.cos(u) * b
+
+  const uy = Math.sin(u) * b
+
+  const v = u + TAU / 3
+
+  const vx = Math.cos(v) * b
+
+  const vy = Math.sin(v) * b
+
+  const w = u + TAU * 2 / 3
+
+  const wx = Math.cos(w) * b
+
+  const wy = Math.sin(w) * b
+
+  let i
+
+  let p
+
+  let x
+
+  let y
 
   ctx.strokeStyle = color
   ctx.lineWidth = s * 0.5
@@ -208,10 +248,13 @@ function snow(ctx, t, cx, cy, cw, s, color) {
 function fogbank(ctx, t, cx, cy, cw, s, color) {
   t /= 30000
 
-  let a = cw * 0.21,
-    b = cw * 0.06,
-    c = cw * 0.21,
-    d = cw * 0.28
+  const a = cw * 0.21
+
+  const b = cw * 0.06
+
+  const c = cw * 0.21
+
+  const d = cw * 0.28
 
   ctx.fillStyle = color
   puffs(ctx, t, cx, cy, a, b, c, d)
@@ -266,12 +309,17 @@ const WIND_PATHS = [
 const WIND_OFFSETS = [{ start: 0.36, end: 0.11 }, { start: 0.56, end: 0.16 }]
 
 function leaf(ctx, t, x, y, cw, s, color) {
-  let a = cw / 8,
-    b = a / 3,
-    c = 2 * b,
-    d = (t % 1) * TAU,
-    e = Math.cos(d),
-    f = Math.sin(d)
+  const a = cw / 8
+
+  const b = a / 3
+
+  const c = 2 * b
+
+  const d = (t % 1) * TAU
+
+  const e = Math.cos(d)
+
+  const f = Math.sin(d)
 
   ctx.fillStyle = color
   ctx.strokeStyle = color
@@ -292,14 +340,21 @@ function leaf(ctx, t, x, y, cw, s, color) {
 function swoosh(ctx, t, cx, cy, cw, s, index, total, color) {
   t /= 2500
 
-  let path = WIND_PATHS[index],
-    a = (t + index - WIND_OFFSETS[index].start) % total,
-    c = (t + index - WIND_OFFSETS[index].end) % total,
-    e = (t + index) % total,
-    b,
-    d,
-    f,
-    i
+  const path = WIND_PATHS[index]
+
+  let a = (t + index - WIND_OFFSETS[index].start) % total
+
+  let c = (t + index - WIND_OFFSETS[index].end) % total
+
+  let e = (t + index) % total
+
+  let b
+
+  let d
+
+  let f
+
+  let i
 
   ctx.strokeStyle = color
   ctx.lineWidth = s
@@ -386,100 +441,127 @@ const Skycons = function(opts) {
 }
 
 Skycons.CLEAR_DAY = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   sun(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, color)
 }
 
 Skycons.CLEAR_NIGHT = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   moon(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, color)
 }
 
 Skycons.PARTLY_CLOUDY_DAY = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   sun(ctx, t, w * 0.625, h * 0.375, s * 0.75, s * STROKE, color)
   cloud(ctx, t, w * 0.375, h * 0.625, s * 0.75, s * STROKE, color)
 }
 
 Skycons.PARTLY_CLOUDY_NIGHT = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   moon(ctx, t, w * 0.667, h * 0.375, s * 0.75, s * STROKE, color)
   cloud(ctx, t, w * 0.375, h * 0.625, s * 0.75, s * STROKE, color)
 }
 
 Skycons.CLOUDY = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   cloud(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, color)
 }
 
 Skycons.RAIN = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   rain(ctx, t, w * 0.5, h * 0.37, s * 0.9, s * STROKE, color)
   cloud(ctx, t, w * 0.5, h * 0.37, s * 0.9, s * STROKE, color)
 }
 
 Skycons.SLEET = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   sleet(ctx, t, w * 0.5, h * 0.37, s * 0.9, s * STROKE, color)
   cloud(ctx, t, w * 0.5, h * 0.37, s * 0.9, s * STROKE, color)
 }
 
 Skycons.SNOW = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   snow(ctx, t, w * 0.5, h * 0.37, s * 0.9, s * STROKE, color)
   cloud(ctx, t, w * 0.5, h * 0.37, s * 0.9, s * STROKE, color)
 }
 
 Skycons.WIND = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h)
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
 
   swoosh(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, 0, 2, color)
   swoosh(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, 1, 2, color)
 }
 
 Skycons.FOG = function(ctx, t, color) {
-  let w = ctx.canvas.width,
-    h = ctx.canvas.height,
-    s = Math.min(w, h),
-    k = s * STROKE
+  const w = ctx.canvas.width
+
+  const h = ctx.canvas.height
+
+  const s = Math.min(w, h)
+
+  const k = s * STROKE
 
   fogbank(ctx, t, w * 0.5, h * 0.32, s * 0.75, k, color)
 
   t /= 5000
 
-  let a = Math.cos(t * TAU) * s * 0.02,
-    b = Math.cos((t + 0.25) * TAU) * s * 0.02,
-    c = Math.cos((t + 0.5) * TAU) * s * 0.02,
-    d = Math.cos((t + 0.75) * TAU) * s * 0.02,
-    n = h * 0.936,
-    e = Math.floor(n - k * 0.5) + 0.5,
-    f = Math.floor(n - k * 2.5) + 0.5
+  const a = Math.cos(t * TAU) * s * 0.02
+
+  const b = Math.cos((t + 0.25) * TAU) * s * 0.02
+
+  const c = Math.cos((t + 0.5) * TAU) * s * 0.02
+
+  const d = Math.cos((t + 0.75) * TAU) * s * 0.02
+
+  const n = h * 0.936
+
+  const e = Math.floor(n - k * 0.5) + 0.5
+
+  const f = Math.floor(n - k * 2.5) + 0.5
 
   ctx.strokeStyle = color
   ctx.lineWidth = k
@@ -557,8 +639,9 @@ Skycons.prototype = {
 
     this.pause()
     this.interval = requestInterval(() => {
-      let now = Date.now(),
-        i
+      const now = Date.now()
+
+      let i
 
       for (i = self.list.length; i--; ) self.draw(self.list[i], now)
     }, 1000 / 60)
