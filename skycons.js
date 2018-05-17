@@ -1,6 +1,3 @@
-(function(global) {
-  "use strict";
-
       var requestInterval = function(fn) {
         var handle = {value: null};
 
@@ -337,6 +334,7 @@
   */
 
   var WIND_PATHS = [
+        // prettier-ignore
         [
           -0.7500, -0.1800, -0.7219, -0.1527, -0.6971, -0.1225,
           -0.6739, -0.0910, -0.6516, -0.0588, -0.6298, -0.0262,
@@ -361,6 +359,7 @@
            0.6466,  0.1244,  0.6805,  0.1440,  0.7147,  0.1630,
            0.7500,  0.1800
         ],
+        // prettier-ignore
         [
           -0.7500,  0.0000, -0.7033,  0.0195, -0.6569,  0.0399,
           -0.6104,  0.0600, -0.5634,  0.0789, -0.5155,  0.0954,
@@ -698,5 +697,4 @@
     }
   };
 
-  global.Skycons = Skycons;
-}(this));
+  export default Skycons
