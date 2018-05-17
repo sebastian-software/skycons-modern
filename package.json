@@ -1,0 +1,38 @@
+{
+  "name": "skycons-modern",
+  "version": "1.0.0",
+  "description": "Modernized Fork of Skycons",
+  "main": "lib/index.cjs.js",
+  "module": "lib/index.esm.js",
+  "scripts": {
+    "lint": "eslint .",
+    "fix": "eslint --fix .",
+    "format": "prettier --ignore-path .gitignore --write '**/*.js' && npm run fix",
+    "precommit": "lint-staged",
+    "release": "git push && release-it --github.release --npm.publish --non-interactive",
+    "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
+    "release:major": "git push && release-it --github.release --npm.publish --non-interactive --increment major"
+  },
+  "files": [
+    "lib/"
+  ],
+  "pre-commit": "lint-staged",
+  "lint-staged": {
+    "*.js": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swernerx/skycons.git"
+  },
+  "keywords": ["weather", "icon", "canvas", "animation"],
+  "author": {
+    "name": "Sebastian Software",
+    "email": "s.werner@sebastian-software.de",
+    "url": "https://www.sebastian-software.de"
+  },
+  "license": "Public Domain",
+  "bugs": {
+    "url": "https://github.com/swernerx/skycons/issues"
+  },
+  "homepage": "https://github.com/swernerx/skycons#readme"
+}
