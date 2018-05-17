@@ -1,28 +1,11 @@
 (function(global) {
   "use strict";
 
-  /* Set up a RequestAnimationFrame shim so we can animate efficiently FOR
-   * GREAT JUSTICE. */
-  var requestInterval, cancelInterval;
-
-  (function() {
-    var raf = global.requestAnimationFrame       ||
-              global.webkitRequestAnimationFrame ||
-              global.mozRequestAnimationFrame    ||
-              global.oRequestAnimationFrame      ||
-              global.msRequestAnimationFrame     ,
-        caf = global.cancelAnimationFrame        ||
-              global.webkitCancelAnimationFrame  ||
-              global.mozCancelAnimationFrame     ||
-              global.oCancelAnimationFrame       ||
-              global.msCancelAnimationFrame      ;
-
-    if(raf && caf) {
-      requestInterval = function(fn) {
+      var requestInterval = function(fn) {
         var handle = {value: null};
 
         function loop() {
-          handle.value = raf(loop);
+          handle.value = requestAnimationFrame(loop);
           fn();
         }
 
@@ -30,16 +13,9 @@
         return handle;
       };
 
-      cancelInterval = function(handle) {
-        caf(handle.value);
+      var cancelInterval = function(handle) {
+        cancelAnimationFrame(handle.value);
       };
-    }
-
-    else {
-      requestInterval = setInterval;
-      cancelInterval = clearInterval;
-    }
-  }());
 
   /* Catmull-rom spline stuffs. */
   /*
