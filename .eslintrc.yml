@@ -1,5 +1,5 @@
 extends:
-  - readable
+  - readable/browser
 
 rules:
   no-console: off
