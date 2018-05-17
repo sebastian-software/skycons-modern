@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "fix": "eslint --fix .",
     "format": "prettier --ignore-path .gitignore --write '**/*.js' && npm run fix",
+    "prepack": "preppy",
     "precommit": "lint-staged",
     "release": "git push && release-it --github.release --npm.publish --non-interactive",
     "release:minor": "git push && release-it --github.release --npm.publish --non-interactive --increment minor",
@@ -35,14 +36,18 @@
     "email": "s.werner@sebastian-software.de",
     "url": "https://www.sebastian-software.de"
   },
-  "license": "Public Domain",
+  "license": "Unlicense",
   "bugs": {
     "url": "https://github.com/swernerx/skycons/issues"
   },
   "homepage": "https://github.com/swernerx/skycons#readme",
   "devDependencies": {
+    "babel-preset-edge": "^4.1.0",
     "eslint": "^4.19.1",
     "eslint-config-readable": "^1.13.2",
-    "prettier": "^1.12.1"
+    "flow-bin": "^0.72.0",
+    "preppy": "^4.2.2",
+    "prettier": "^1.12.1",
+    "react": "^16.3.2"
   }
 }
