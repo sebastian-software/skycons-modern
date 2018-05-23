@@ -78,17 +78,11 @@ function sun(ctx, t, cx, cy, cw, s, color) {
   t /= 120000
 
   const a = cw * 0.25 - s * 0.5
-
   const b = cw * 0.32 + s * 0.5
-
   const c = cw * 0.5 - s * 0.5
-
   let i
-
   let p
-
   let cos
-
   let sin
 
   ctx.strokeStyle = color
@@ -536,9 +530,8 @@ Skycons.WIND = function(ctx, t, color) {
   swoosh(ctx, t, w * 0.5, h * 0.5, s, s * STROKE, 1, 2, color)
 }
 
-Skycons.FOG = function(ctx, t, color) {
+Skycons.FOG = function fog(ctx, t, color) {
   const w = ctx.canvas.width
-
   const h = ctx.canvas.height
 
   const s = Math.min(w, h)
@@ -552,15 +545,12 @@ Skycons.FOG = function(ctx, t, color) {
   const a = Math.cos(t * TAU) * s * 0.02
 
   const b = Math.cos((t + 0.25) * TAU) * s * 0.02
-
   const c = Math.cos((t + 0.5) * TAU) * s * 0.02
-
   const d = Math.cos((t + 0.75) * TAU) * s * 0.02
 
   const n = h * 0.936
 
   const e = Math.floor(n - k * 0.5) + 0.5
-
   const f = Math.floor(n - k * 2.5) + 0.5
 
   ctx.strokeStyle = color
@@ -582,11 +572,6 @@ Skycons.prototype = {
   add(el, draw) {
     let obj
 
-    if (typeof el === "string") el = document.getElementById(el)
-
-    // Does nothing if canvas name doesn't exists
-    if (el === null) return
-
     draw = this._determineDrawingFunction(draw)
 
     // Does nothing if the draw function isn't actually a function
@@ -604,8 +589,6 @@ Skycons.prototype = {
   set(el, draw) {
     let i
 
-    if (typeof el === "string") el = document.getElementById(el)
-
     for (i = this.list.length; i--; )
       if (this.list[i].element === el) {
         this.list[i].drawing = this._determineDrawingFunction(draw)
@@ -617,8 +600,6 @@ Skycons.prototype = {
   },
   remove(el) {
     let i
-
-    if (typeof el === "string") el = document.getElementById(el)
 
     for (i = this.list.length; i--; )
       if (this.list[i].element === el) {
